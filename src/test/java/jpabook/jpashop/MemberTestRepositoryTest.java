@@ -7,10 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
-public class MemberRepositoryTest {
+public class MemberTestRepositoryTest {
 
     @Autowired
     MemberRepository memberRepository;
@@ -20,16 +18,16 @@ public class MemberRepositoryTest {
     @Rollback(value = false)
     public void testMember() throws Exception {
         //given
-        Member member = new Member();
-        member.setUsername("memberA");
+        MemberTest memberTest = new MemberTest();
+        memberTest.setUsername("memberA");
 
         //when
-        Long saveId = memberRepository.save(member);
-        Member findMember = memberRepository.find(saveId);
+        Long saveId = memberRepository.save(memberTest);
+        MemberTest findMemberTest = memberRepository.find(saveId);
 
         //then
-        Assertions.assertThat(findMember.getId()).isEqualTo(member.getId());
-        Assertions.assertThat(findMember.getUsername()).isEqualTo(member.getUsername());
+        Assertions.assertThat(findMemberTest.getId()).isEqualTo(memberTest.getId());
+        Assertions.assertThat(findMemberTest.getUsername()).isEqualTo(memberTest.getUsername());
         System.out.println("breakpoint");
     }
 }
