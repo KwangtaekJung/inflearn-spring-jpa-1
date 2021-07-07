@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-@RequiredArgsConstructor
+@RequiredArgsConstructor  //final 필드만으로 생성자 만든다. 생성자 Injection 수행됨.
 public class MemberService {
 
     private final MemberRepository memberRepository;
